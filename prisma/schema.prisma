@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@localhost:5432/omie-api?schema=public"
+}
+
+model Invoices {
+  cChaveNFe String @db.VarChar(50) @unique
+  nIdNF BigInt @db.BigInt
+  cCodCateg String
+  cDeneg String
+  dCan String
+  dEmi String
+  nNF String
+  cCodCliInt String
+  cRazao String
+  cnpj_cpf String
+  nCodCli BigInt @db.BigInt
+  vNF Float
+  xProd String
+
+  @@map("Invoices")
+}
