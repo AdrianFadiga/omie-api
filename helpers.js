@@ -5,8 +5,8 @@ module.exports = {
       'https://app.omie.com.br/api/v1/produtos/nfconsultar/',
       {
         call: 'ListarNF',
-        app_key: '905225428107',
-        app_secret: '65420591f307877587eec74cb7527fda',
+        app_key: process.env.OMIE_APP_KEY,
+        app_secret: process.env.OMIE_APP_SECRET,
         param: [
           {
             pagina: 1,
