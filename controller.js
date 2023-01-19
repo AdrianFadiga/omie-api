@@ -13,8 +13,9 @@ module.exports = {
   },
 
   async getAllNFEs (req, res) {
-    const totalPages = await helpers.getTotalPages()
-    return res.json(totalPages)
+    const registrosPorPagina = 500
+    const initialDate = await helpers.getInitialDate()
+    const totalPages = await helpers.getTotalPages(registrosPorPagina, initialDate)
     for (let i = 1; i <= totalPages; i += 1) {
       const { data } = await axios.post(
         'https://app.omie.com.br/api/v1/produtos/nfconsultar/',
@@ -27,8 +28,8 @@ module.exports = {
               pagina: i,
               registros_por_pagina: 500,
               apenas_importado_api: 'N',
-              ordenar_por: 'DATA_LANCAMENTO'
-            // dEmiInicial: '01/08/2021'
+              ordenar_por: 'DATA_LANCAMENTO',
+              dEmiInicial: initialDate
             }
           ]
         },
@@ -42,10 +43,6 @@ module.exports = {
       await model.saveAll(serializedInfo)
       console.log(i)
     }
-    return res.json('Rapaz, tu é doido')
-  },
-
-  async teste () {
-    await model.saveAll()
+    return res.json('Deu boa')
   }
 }

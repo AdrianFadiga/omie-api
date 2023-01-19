@@ -11,8 +11,8 @@ datasource db {
 }
 
 model Invoices {
-  cChaveNFe String @db.VarChar(50) @unique
-  nIdNF BigInt @db.BigInt
+  cChaveNFe String
+  nIdNF String @unique
   cCodCateg String
   cDeneg String
   dCan String
@@ -21,9 +21,10 @@ model Invoices {
   cCodCliInt String
   cRazao String
   cnpj_cpf String
-  nCodCli BigInt @db.BigInt
+  nCodCli String
   vNF Float
   xProd String
+  createdAt DateTime @default(now())
 
   @@map("Invoices")
 }

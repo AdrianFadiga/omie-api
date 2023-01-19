@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Invoices" ALTER COLUMN "nCodCli" SET DATA TYPE BIGINT;
